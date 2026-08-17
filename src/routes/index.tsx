@@ -172,7 +172,9 @@ function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void })
             <h3 className="text-xs font-bold text-rose-900 uppercase tracking-wider mb-2">
               Razonamiento IA: {lead.score}/100
             </h3>
-            <p className="text-sm text-status-high-subtle-foreground leading-relaxed italic">"{lead.scoreReason}"</p>
+            <p className="text-sm text-status-high-subtle-foreground leading-relaxed italic">
+              "{lead.scoreReason}"
+            </p>
           </div>
 
           {/* Customer info */}
