@@ -131,7 +131,9 @@ function MetricCard({
       <p className="text-[10px] font-semibold uppercase tracking-widest text-muted-foreground mb-1">
         {label}
       </p>
-      <p className={`text-3xl font-extrabold tracking-tighter ${valueClasses[accent ?? "neutral"]}`}>
+      <p
+        className={`text-3xl font-extrabold tracking-tighter ${valueClasses[accent ?? "neutral"]}`}
+      >
         {value}
       </p>
       <p className="mt-2 text-[10px] font-mono text-muted-foreground">{subtitle}</p>
@@ -139,13 +141,7 @@ function MetricCard({
   );
 }
 
-function LeadDetailPanel({
-  lead,
-  onClose,
-}: {
-  lead: Lead;
-  onClose: () => void;
-}) {
+function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void }) {
   return (
     <>
       <div
@@ -186,28 +182,36 @@ function LeadDetailPanel({
             </h4>
             <div className="grid grid-cols-2 gap-3">
               <div className="p-3 border border-border rounded-lg bg-muted/50">
-                <div className="text-[10px] font-semibold text-muted-foreground uppercase">Email</div>
+                <div className="text-[10px] font-semibold text-muted-foreground uppercase">
+                  Email
+                </div>
                 <div className="text-sm font-medium flex items-center gap-1.5 mt-1">
                   <Mail className="size-3.5 text-muted-foreground" />
                   <span className="truncate">{lead.email}</span>
                 </div>
               </div>
               <div className="p-3 border border-border rounded-lg bg-muted/50">
-                <div className="text-[10px] font-semibold text-muted-foreground uppercase">Teléfono</div>
+                <div className="text-[10px] font-semibold text-muted-foreground uppercase">
+                  Teléfono
+                </div>
                 <div className="text-sm font-medium flex items-center gap-1.5 mt-1">
                   <Phone className="size-3.5 text-muted-foreground" />
                   <span className="truncate">{lead.phone}</span>
                 </div>
               </div>
               <div className="p-3 border border-border rounded-lg bg-muted/50">
-                <div className="text-[10px] font-semibold text-muted-foreground uppercase">Destino</div>
+                <div className="text-[10px] font-semibold text-muted-foreground uppercase">
+                  Destino
+                </div>
                 <div className="text-sm font-medium flex items-center gap-1.5 mt-1">
                   <MapPin className="size-3.5 text-muted-foreground" />
                   <span className="truncate">{lead.destination}</span>
                 </div>
               </div>
               <div className="p-3 border border-border rounded-lg bg-muted/50">
-                <div className="text-[10px] font-semibold text-muted-foreground uppercase">Intención</div>
+                <div className="text-[10px] font-semibold text-muted-foreground uppercase">
+                  Intención
+                </div>
                 <div className="text-sm font-medium text-emerald-600 flex items-center gap-1.5 mt-1">
                   <TrendingUp className="size-3.5" />
                   <span className="truncate">{lead.intent}</span>
@@ -229,7 +233,9 @@ function LeadDetailPanel({
               <div className="text-[10px] font-semibold text-muted-foreground uppercase flex items-center gap-1">
                 <Calendar className="size-3" /> Fechas
               </div>
-              <div className="text-sm font-medium mt-1">{dateRange(lead.startDate, lead.endDate)}</div>
+              <div className="text-sm font-medium mt-1">
+                {dateRange(lead.startDate, lead.endDate)}
+              </div>
             </div>
             <div className="p-3 border border-border rounded-lg bg-muted/50">
               <div className="text-[10px] font-semibold text-muted-foreground uppercase flex items-center gap-1">
@@ -407,7 +413,10 @@ function DashboardPage() {
         </div>
 
         {/* Lead table */}
-        <section className="animate-fade-up bg-card rounded-xl border border-border shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden" style={{ animationDelay: "240ms" }}>
+        <section
+          className="animate-fade-up bg-card rounded-xl border border-border shadow-[0_4px_20px_rgba(0,0,0,0.03)] overflow-hidden"
+          style={{ animationDelay: "240ms" }}
+        >
           <div className="px-6 py-4 border-b border-border flex flex-col sm:flex-row sm:items-center justify-between gap-3 bg-muted/50">
             <h2 className="text-sm font-semibold">
               Cola activa{" "}
@@ -470,7 +479,10 @@ function DashboardPage() {
                 ))}
                 {sortedLeads.length === 0 && (
                   <tr>
-                    <td colSpan={8} className="px-6 py-12 text-center text-sm text-muted-foreground">
+                    <td
+                      colSpan={8}
+                      className="px-6 py-12 text-center text-sm text-muted-foreground"
+                    >
                       No se encontraron leads para "{query}".
                     </td>
                   </tr>
@@ -482,7 +494,9 @@ function DashboardPage() {
       </main>
 
       {/* Detail panel */}
-      {selectedLead && <LeadDetailPanel lead={selectedLead} onClose={() => setSelectedLead(null)} />}
+      {selectedLead && (
+        <LeadDetailPanel lead={selectedLead} onClose={() => setSelectedLead(null)} />
+      )}
     </div>
   );
 }

@@ -38,7 +38,11 @@ export const leads: Lead[] = [
       "Familia de 4 personas que viaja por primera vez a Japón. Buscan una experiencia de lujo cultural con estancias en ryokans boutique y tours privados.",
     scoreReason:
       "Alto presupuesto por viajero, ventana de viaje definida y corta, y alta intención de compra demostrada. Han solicitado itinerarios de lujo en Japón previamente.",
-    missingInfo: ["Preferencia de aerolínea", "Restricciones alimentarias específicas", "Edades de los niños"],
+    missingInfo: [
+      "Preferencia de aerolínea",
+      "Restricciones alimentarias específicas",
+      "Edades de los niños",
+    ],
     nextAction: "Agendar llamada de concierge VIP para asignación de hotel de lujo.",
     suggestedResponse:
       "Hola Julián, vi que están planificando un viaje familiar a Kioto para octubre. Acabo de ver disponibilidad en una villa privada del Aman Kyoto para esas fechas exactas. ¿Podemos agendar una breve llamada esta semana para ajustar los detalles?",
@@ -84,7 +88,10 @@ export const leads: Lead[] = [
       "Pareja interesada en un retiro de bienestar de 9 días. Buscan spa, yoga y alimentación saludable en Ubud y costa sur.",
     scoreReason:
       "Consulta muy enfocada con fechas y presupuesto claros. El destino y el tipo de viaje tienen alto margen de conversión.",
-    missingInfo: ["Nivel de hotel deseado (boutique vs resort)", "Preferencia de actividades de aventura"],
+    missingInfo: [
+      "Nivel de hotel deseado (boutique vs resort)",
+      "Preferencia de actividades de aventura",
+    ],
     nextAction: "Enviar paquete de bienestar con opciones de resort y boutique hotel.",
     suggestedResponse:
       "Hola Priya, Bali es ideal para un retiro de bienestar en noviembre. Tengo una combinación de 5 noches en Ubud y 4 en la costa sur con spa y clases de yoga incluidas. ¿Les gustaría recibir el itinerario?",
@@ -107,7 +114,10 @@ export const leads: Lead[] = [
       "Grupo de 4 amigos experimentados en ski. Buscan un chalet privado cerca de Zermatt o Verbier con acceso directo a pistas.",
     scoreReason:
       "Presupuesto alto y destino de temporada alta. El grupo tiene experiencia previa en viajes de ski, lo que reduce fricción de venta.",
-    missingInfo: ["Nivel de ski de cada participante", "Preferencia de resort (Zermatt vs Verbier)"],
+    missingInfo: [
+      "Nivel de ski de cada participante",
+      "Preferencia de resort (Zermatt vs Verbier)",
+    ],
     nextAction: "Confirmar disponibilidad de chalets privados para las fechas solicitadas.",
     suggestedResponse:
       "Hola David, para su grupo de ski en enero tengo dos chalets privados con acceso directo a pistas. Uno en Zermatt y otro en Verbier. ¿Qué resort prefieren para priorizar opciones?",
@@ -268,7 +278,11 @@ export const leads: Lead[] = [
       "Familia de 3 que busca una semana de playa en Cancún. No tienen preferencias específicas de hotel ni actividades.",
     scoreReason:
       "Presupuesto ajustado y consulta genérica. La falta de especificaciones reduce el score de priorización.",
-    missingInfo: ["Edad del hijo/a", "Preferencia todo incluido vs plan europeo", "Vuelos de origen"],
+    missingInfo: [
+      "Edad del hijo/a",
+      "Preferencia todo incluido vs plan europeo",
+      "Vuelos de origen",
+    ],
     nextAction: "Enviar 2 opciones de resorts todo incluido para familias.",
     suggestedResponse:
       "Hola Roberto, para una semana familiar en Cancún en julio les recomiendo un resort todo incluido. ¿Prefieren algo frente al mar con actividades para niños o algo más tranquilo?",
@@ -291,7 +305,11 @@ export const leads: Lead[] = [
       "Viajera sola que busca una semana en Vancouver para otoño. Interesada en naturaleza, mercados y gastronomía local.",
     scoreReason:
       "Presupuesto bajo para un viaje internacional de una semana. La consulta está en etapa muy temprana de investigación.",
-    missingInfo: ["Origen de vuelos", "Preferencia de alojamiento", "Interés en excursiones a Whistler"],
+    missingInfo: [
+      "Origen de vuelos",
+      "Preferencia de alojamiento",
+      "Interés en excursiones a Whistler",
+    ],
     nextAction: "Enviar guía de opciones de alojamiento económico y tours de día.",
     suggestedResponse:
       "Hola Linda, Vancouver en octubre es hermoso con los colores de otoño. Tengo opciones de alojamiento céntrico y tours de día a las Montañas del Norte. ¿Desde dónde estarías volando?",

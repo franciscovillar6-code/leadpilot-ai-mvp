@@ -78,10 +78,18 @@ export const Route = createRootRouteWithContext<{ queryClient: QueryClient }>()(
       { charSet: "utf-8" },
       { name: "viewport", content: "width=device-width, initial-scale=1" },
       { title: "LeadPilot AI" },
-      { name: "description", content: "Prioriza leads de viajes con inteligencia artificial. Dashboard operativo para equipos de viajes." },
+      {
+        name: "description",
+        content:
+          "Prioriza leads de viajes con inteligencia artificial. Dashboard operativo para equipos de viajes.",
+      },
       { name: "author", content: "LeadPilot AI" },
       { property: "og:title", content: "LeadPilot AI" },
-      { property: "og:description", content: "Prioriza leads de viajes con inteligencia artificial. Dashboard operativo para equipos de viajes." },
+      {
+        property: "og:description",
+        content:
+          "Prioriza leads de viajes con inteligencia artificial. Dashboard operativo para equipos de viajes.",
+      },
       { property: "og:type", content: "website" },
       { name: "twitter:card", content: "summary_large_image" },
       { name: "twitter:site", content: "@LeadPilotAI" },
