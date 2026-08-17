@@ -145,7 +145,7 @@ function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void })
   return (
     <>
       <div
-        className="fixed inset-0 z-40 bg-slate-900/20 backdrop-blur-[2px]"
+        className="fixed inset-0 z-40 bg-foreground/20 backdrop-blur-[2px]"
         onClick={onClose}
         aria-hidden="true"
       />
