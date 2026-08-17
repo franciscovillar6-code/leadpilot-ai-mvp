@@ -72,9 +72,9 @@ const dateRange = (start: string, end: string) => {
 
 function ScoreBadge({ score, priority }: { score: number; priority: Lead["priority"] }) {
   const colorClasses = {
-    high: "bg-rose-50 text-rose-700 ring-rose-200/50",
-    medium: "bg-amber-50 text-amber-700 ring-amber-200/50",
-    low: "bg-slate-100 text-slate-700 ring-slate-200/50",
+    high: "bg-status-high-subtle text-status-high-subtle-foreground ring-status-high/20",
+    medium: "bg-status-medium-subtle text-status-medium-subtle-foreground ring-status-medium/20",
+    low: "bg-status-low-subtle text-status-low-subtle-foreground ring-status-low/20",
   };
 
   return (
@@ -89,7 +89,7 @@ function ScoreBadge({ score, priority }: { score: number; priority: Lead["priori
 function PriorityBadge({ priority }: { priority: Lead["priority"] }) {
   const classes = {
     high: "bg-rose-600 text-white",
-    medium: "bg-amber-500 text-white",
+    medium: "bg-status-medium text-status-medium-foreground",
     low: "bg-slate-400 text-white",
   };
 
@@ -118,9 +118,9 @@ function MetricCard({
 }) {
   const valueClasses = {
     neutral: "text-foreground",
-    rose: "text-rose-600",
-    amber: "text-amber-500",
-    slate: "text-slate-400",
+    rose: "text-status-high",
+    amber: "text-status-medium",
+    slate: "text-status-low",
   };
 
   return (
@@ -168,11 +168,11 @@ function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void })
 
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Score reasoning */}
-          <div className="p-4 rounded-lg bg-rose-50 border border-rose-100">
+          <div className="p-4 rounded-lg bg-status-high-subtle border border-status-high/10">
             <h3 className="text-xs font-bold text-rose-900 uppercase tracking-wider mb-2">
               Razonamiento IA: {lead.score}/100
             </h3>
-            <p className="text-sm text-rose-800 leading-relaxed italic">"{lead.scoreReason}"</p>
+            <p className="text-sm text-status-high-subtle-foreground leading-relaxed italic">"{lead.scoreReason}"</p>
           </div>
 
           {/* Customer info */}
@@ -212,7 +212,7 @@ function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void })
                 <div className="text-[10px] font-semibold text-muted-foreground uppercase">
                   Intención
                 </div>
-                <div className="text-sm font-medium text-emerald-600 flex items-center gap-1.5 mt-1">
+                <div className="text-sm font-medium text-intent-strong flex items-center gap-1.5 mt-1">
                   <TrendingUp className="size-3.5" />
                   <span className="truncate">{lead.intent}</span>
                 </div>
@@ -252,7 +252,7 @@ function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void })
             </h4>
             <ul className="text-sm space-y-2">
               {lead.missingInfo.map((item) => (
-                <li key={item} className="flex items-center gap-2 text-rose-600">
+                <li key={item} className="flex items-center gap-2 text-status-high">
                   <AlertCircle className="size-3.5" />
                   {item}
                 </li>
