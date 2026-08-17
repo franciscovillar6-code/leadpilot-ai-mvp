@@ -88,16 +88,16 @@ function ScoreBadge({ score, priority }: { score: number; priority: Lead["priori
 
 function PriorityBadge({ priority }: { priority: Lead["priority"] }) {
   const classes = {
-    high: "bg-rose-600 text-white",
+    high: "bg-status-high text-status-high-foreground",
     medium: "bg-status-medium text-status-medium-foreground",
-    low: "bg-slate-400 text-white",
+    low: "bg-status-low text-status-low-foreground",
   };
 
   return (
     <span
       className={`inline-flex items-center gap-1.5 px-2 py-1 text-[10px] font-bold uppercase rounded-[4px] ${classes[priority]}`}
     >
-      <span className="size-1.5 rounded-full bg-white/80" />
+      <span className="size-1.5 rounded-full bg-status-high-foreground/80" />
       {priorityLabel[priority]}
     </span>
   );
