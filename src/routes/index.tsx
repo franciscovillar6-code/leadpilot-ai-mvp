@@ -97,7 +97,7 @@ function PriorityBadge({ priority }: { priority: Lead["priority"] }) {
     <span
       className={`inline-flex items-center gap-1.5 px-2 py-1 text-[10px] font-bold uppercase rounded-[4px] ${classes[priority]}`}
     >
-      <span className="size-1.5 rounded-full bg-status-high-foreground/80" />
+      <span className="size-1.5 rounded-full bg-white/80" />
       {priorityLabel[priority]}
     </span>
   );
