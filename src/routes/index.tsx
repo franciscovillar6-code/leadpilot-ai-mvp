@@ -4,7 +4,7 @@ import { format } from "date-fns";
 import { es } from "date-fns/locale";
 import {
   Download,
-  RefreshCw,
+  Plus,
   X,
   Plane,
   Users,
@@ -12,6 +12,8 @@ import {
   Wallet,
   TrendingUp,
   AlertCircle,
+  ArrowDown,
+  ArrowUp,
   CheckCircle2,
   Mail,
   Phone,
@@ -19,7 +21,8 @@ import {
   Sparkles,
 } from "lucide-react";
 
-import { leads, type Lead } from "@/lib/leads";
+import { leads as mockLeads, type Lead } from "@/lib/leads";
+import { NewInquiryDialog } from "@/components/new-inquiry-dialog";
 
 export const Route = createFileRoute("/")({
   head: () => ({
@@ -64,9 +67,19 @@ const budgetFormatter = new Intl.NumberFormat("es-AR", {
   maximumFractionDigits: 0,
 });
 
+const safeFormat = (value: string) => {
+  if (!value) return null;
+  const parsed = new Date(value);
+  if (Number.isNaN(parsed.getTime())) return null;
+  return format(parsed, "dd MMM", { locale: es }).toUpperCase();
+};
+
 const dateRange = (start: string, end: string) => {
-  const startFmt = format(start, "dd MMM", { locale: es }).toUpperCase();
-  const endFmt = format(end, "dd MMM", { locale: es }).toUpperCase();
+  const startFmt = safeFormat(start);
+  const endFmt = safeFormat(end);
+  if (!startFmt && !endFmt) return "SIN FECHA";
+  if (!endFmt) return startFmt!;
+  if (!startFmt) return endFmt;
   return `${startFmt} — ${endFmt}`;
 };
 
@@ -176,6 +189,43 @@ function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void })
               "{lead.scoreReason}"
             </p>
           </div>
+
+          {/* Score factors */}
+          {lead.scoreFactors && lead.scoreFactors.length > 0 && (
+            <div>
+              <h4 className="text-xs font-bold uppercase tracking-wider text-muted-foreground mb-2">
+                Factores del score
+              </h4>
+              <ul className="space-y-2">
+                {lead.scoreFactors.map((factor) => (
+                  <li
+                    key={factor.criterion}
+                    className="flex items-start gap-2 p-3 border border-border rounded-lg bg-muted/50"
+                  >
+                    {factor.impact === "positive" ? (
+                      <ArrowUp className="size-3.5 mt-0.5 text-intent-strong" />
+                    ) : (
+                      <ArrowDown className="size-3.5 mt-0.5 text-status-high" />
+                    )}
+                    <div className="flex-1">
+                      <div className="flex items-center justify-between gap-2">
+                        <span className="text-sm font-medium">{factor.criterion}</span>
+                        <span
+                          className={`text-xs font-mono font-semibold ${
+                            factor.impact === "positive" ? "text-intent-strong" : "text-status-high"
+                          }`}
+                        >
+                          {factor.impact === "positive" ? "+" : "−"}
+                          {factor.points}
+                        </span>
+                      </div>
+                      <p className="text-xs text-muted-foreground mt-0.5">{factor.detail}</p>
+                    </div>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          )}
 
           {/* Customer info */}
           <div>
@@ -309,14 +359,16 @@ function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void })
 }
 
 function DashboardPage() {
+  const [leads, setLeads] = useState<Lead[]>(mockLeads);
   const [selectedLead, setSelectedLead] = useState<Lead | null>(null);
   const [query, setQuery] = useState("");
+  const [dialogOpen, setDialogOpen] = useState(false);
 
   const sortedLeads = useMemo(() => {
     return leads
       .filter((lead) => lead.destination.toLowerCase().includes(query.toLowerCase()))
       .sort((a, b) => b.score - a.score);
-  }, [query]);
+  }, [leads, query]);
 
   const totals = useMemo(() => {
     return {
@@ -325,7 +377,13 @@ function DashboardPage() {
       medium: leads.filter((l) => l.priority === "medium").length,
       low: leads.filter((l) => l.priority === "low").length,
     };
-  }, []);
+  }, [leads]);
+
+  const handleAnalyzed = (lead: Lead) => {
+    setLeads((prev) => [lead, ...prev]);
+    setDialogOpen(false);
+    setSelectedLead(lead);
+  };
 
   return (
     <div className="min-h-screen bg-background font-sans text-foreground selection:bg-primary/10">
@@ -375,9 +433,12 @@ function DashboardPage() {
               <Download className="size-3.5" />
               Exportar CSV
             </button>
-            <button className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-primary text-primary-foreground rounded-md shadow-sm hover:bg-primary/90 transition-colors">
-              <RefreshCw className="size-3.5" />
-              Actualizar
+            <button
+              onClick={() => setDialogOpen(true)}
+              className="inline-flex items-center gap-1.5 px-4 py-2 text-xs font-semibold bg-primary text-primary-foreground rounded-md shadow-sm hover:bg-primary/90 transition-colors"
+            >
+              <Plus className="size-3.5" />
+              Nueva consulta
             </button>
           </div>
         </header>
@@ -498,6 +559,11 @@ function DashboardPage() {
       {/* Detail panel */}
       {selectedLead && (
         <LeadDetailPanel lead={selectedLead} onClose={() => setSelectedLead(null)} />
+      )}
+
+      {/* New AI inquiry */}
+      {dialogOpen && (
+        <NewInquiryDialog onClose={() => setDialogOpen(false)} onAnalyzed={handleAnalyzed} />
       )}
     </div>
   );
