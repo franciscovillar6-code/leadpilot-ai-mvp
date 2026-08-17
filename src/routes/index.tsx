@@ -169,7 +169,7 @@ function LeadDetailPanel({ lead, onClose }: { lead: Lead; onClose: () => void })
         <div className="flex-1 overflow-y-auto p-6 space-y-6">
           {/* Score reasoning */}
           <div className="p-4 rounded-lg bg-status-high-subtle border border-status-high/10">
-            <h3 className="text-xs font-bold text-rose-900 uppercase tracking-wider mb-2">
+            <h3 className="text-xs font-bold text-status-high uppercase tracking-wider mb-2">
               Razonamiento IA: {lead.score}/100
             </h3>
             <p className="text-sm text-status-high-subtle-foreground leading-relaxed italic">
@@ -352,7 +352,7 @@ function DashboardPage() {
             </div>
           </div>
           <div className="flex items-center gap-3">
-            <div className="size-8 rounded-full bg-muted ring-1 ring-black/5" />
+            <div className="size-8 rounded-full bg-muted ring-1 ring-foreground/5" />
           </div>
         </div>
       </nav>
