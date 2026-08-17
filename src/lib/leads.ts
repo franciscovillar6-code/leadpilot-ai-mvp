@@ -1,3 +1,5 @@
+import type { ScoreFactor } from "./scoring";
+
 export interface Lead {
   id: string;
   name: string;
@@ -17,6 +19,10 @@ export interface Lead {
   missingInfo: string[];
   nextAction: string;
   suggestedResponse: string;
+  /** Presente en leads analizados por IA */
+  intentLevel?: "high" | "medium" | "low";
+  scoreFactors?: ScoreFactor[];
+  analyzedByAi?: boolean;
 }
 
 export const leads: Lead[] = [
