@@ -111,6 +111,19 @@
   --sidebar-accent-foreground: oklch(0.2 0.04 260);
   --sidebar-border: oklch(0.9 0.02 250);
   --sidebar-ring: oklch(0.55 0.18 250);
+  --status-high: oklch(0.58 0.22 20);
+  --status-high-foreground: oklch(0.98 0.005 250);
+  --status-high-subtle: oklch(0.96 0.02 20);
+  --status-high-subtle-foreground: oklch(0.50 0.18 20);
+  --status-medium: oklch(0.75 0.16 80);
+  --status-medium-foreground: oklch(0.15 0.04 260);
+  --status-medium-subtle: oklch(0.96 0.03 80);
+  --status-medium-subtle-foreground: oklch(0.55 0.14 60);
+  --status-low: oklch(0.70 0.04 250);
+  --status-low-foreground: oklch(0.98 0.005 250);
+  --status-low-subtle: oklch(0.96 0.02 250);
+  --status-low-subtle-foreground: oklch(0.40 0.05 250);
+  --intent-strong: oklch(0.65 0.18 160);
   --font-sans: "Inter", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
   --font-mono: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, monospace;
 }
